@@ -9,7 +9,7 @@ bool isPalindrome(int x){
     //首先得判断x多大
     long level = 1;//记录输入x的数量级（不用long可能level会溢出）
     long fz = 1;
-    while((long)(x/level)) level*=10;//利用int类型向0取整特性，得到x的数量级，虽然用的除法有点难顶
+    while((int)(x/level)) level*=10;//利用int类型向0取整特性，得到x的数量级，虽然用的除法有点难顶
     level = level/10;//恢复x的数量级
     while((x/level)<(x/fz)){//当比较过中位数之后则停止,//注意，此处x不能等于0！不然Leetcode会报错
         if((x/level)!=(x%(10*fz)/fz))//该步的判断是核心难点，x/level为当前当前数量级，但每次x的个位数都需要单独拿出来，单独拿出x的某个位需要用(x%(10*fz)/fz)表达式结合19行的变化，先x取余比其高一位的再除
