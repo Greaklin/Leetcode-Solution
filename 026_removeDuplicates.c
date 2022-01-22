@@ -1,3 +1,4 @@
+Solution01
 //2022年01月06日晚10：46分开始
 //O（1）的额外空间，哈希表算O1吗？不算，升序数组直接从头到尾遍历，前后一致就删除，前后不一致就再见
 //使用三指针，直接跳就可以了，不需要移动
@@ -34,4 +35,25 @@ int removeDuplicates(int* nums, int numsSize){
         *nums = *jd;
     }
     return length;
+}
+
+
+OfficialSolution
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//这个双指针用的是int索引，主要是好短。。。。
+//虽然和我的时间复杂度是一样的，空间复杂度也相近
+
+int removeDuplicates(int* nums, int numsSize) {
+    if (numsSize == 0) {
+        return 0;
+    }
+    int fast = 1, slow = 1;//使用指针索引，重点是只能用int，比我之前的解法少了8bit的空间
+    while (fast < numsSize) {
+        if (nums[fast] != nums[fast - 1]) {//只要前后都不等就可以复制到slow
+            nums[slow] = nums[fast];
+            ++slow;
+        }
+        ++fast;
+    }
+    return slow;
 }
