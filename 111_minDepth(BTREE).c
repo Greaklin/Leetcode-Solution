@@ -34,3 +34,6 @@ int minDepth(struct TreeNode* root){
     if(root != NULL) dep(root);
     return min;
 }
+
+//2022年01月23日
+//今日彩蛋，啥都没有
